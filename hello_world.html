@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--Chinese code-->
+    <title>blog</title>
+    <meta name="author" content="Limor">
+    <meta name="description" content="programme">
+    <meta name="keywords" content="programme">
+    <!--keywords for searching engine-->
+    <meta http-equiv="refresh" content="60">
+    <!--eyery 30s refresh-->
+    <style type="text/css">
+        body {
+            background-color: #d0dfe6
+        }
+
+        h1 {
+            color: #144a74;
+            font-size: 64px;
+        }
+
+        h2 {
+            color: #11659ac9
+        }
+
+        code {
+            font-family: Consolas;
+            font-size: 20px;
+            background-color: #d0dfe6
+        }
+
+        a:link {
+            color: mediumturquoise
+        }
+
+        a:visited {
+            color: royalblue
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+    <img src="C:\Users\sheva\Desktop\web\background.jpg" alt="background" width="1500" height="1000"
+        style="float: ;z-index: -1;">
+    -->
+    <!--this is a annotation-->
+    <h1>
+        <center>Hello&nbsp;&nbsp;World!</center>
+    </h1>
+    <!--heading, auto create blank line before and after-->
+    <i>2020.3.2&nbsp;&nbsp;9:13</i>
+    <hr>
+    <img src="windows.jpg" alt="windows" width="1000" height="500">
+
+
+    <p>
+        Hello world! I am a <b>programme</b>.
+        <br>
+        <!--new line-->
+        Welcome to my space.
+    </p>
+    <!--paragraph, auto create blank line before and after-->
+    <p>
+        Now let's begin.<br>
+        <a href="#1" color="mediumturquoise">Hello world!</a><br>
+        <a href="#2">666</a><br>
+        <a href="#3">sqrt(x)</a><br>
+        <a href="programme.html" target="_blank" style="text-decoration:none;">programme</a>
+    </p>
+
+
+    <div style="position:absolute;left:50px;top: 900px;width:1400px;height:200px;">
+        <h2><a id="1">Hello World!</a></h2>
+        <div style="position:absolute;left:800px;top:78px; width:600px;height:1000px;background-color:#d0dfe6">
+            <img style="float: left;" src="helloworld.png" alt="helloworld" width="266" height="54">
+        </div>
+        <div style="opacity:1;position:absolute;left:0px;top:50px; width:700px;height:1000px;background-color:#d0dfe6">
+            <pre>        <code class="C hljs" style="width: 800;">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">" stdio.h"</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hello World!"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+            </code>
+        </pre>
+        </div>
+    </div>
+
+
+    <div style="opacity:1;position:absolute;left:50px;top: 1200px; width:1400px;height:400px;background-color:#d0dfe6">
+        <h2><a id="2">666</a></h2>
+        <div style="position:absolute;left:800px;top:78px; width:600px;height:1000px;background-color:#d0dfe6">
+            <img style="float: left;" src="666.png" alt="666" width="100" height="54">
+        </div>
+        <div style="opacity:1;position:absolute;left:0px;top:50px; width:700px;height:1000px;background-color:#d0dfe6">
+            <pre>                <code class="C hljs" style="width: 800;">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"stdio.h"</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">3</span>; i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>, i);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+    <div style="opacity:1;position:absolute;left:50px;top: 1520px; width:1400px;height:1000px;background-color:#d0dfe6">
+        <h2><a id="3">sqrt(x)</a></h2>
+        <div style="position:absolute;left:800px;top:78px; width:600px;height:1000px;background-color:#d0dfe6">
+            <img src="sqrt(x).png" alt="sqrt(x)" style="float:left;" width="600" height="120">
+        </div>
+        <div style="opacity:1;position:absolute;left:0px;top:50px; width:700px;height:1000px;background-color:#d0dfe6">
+            <pre>                <code class="C hljs" style="width: 700;">
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">"stdio.h"</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">double</span> left = <span class="hljs-number">0</span>,right = <span class="hljs-number">0</span>, root = <span class="hljs-number">0</span>, num = <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">do</span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"please input the number(n&gt;=0):\n"</span>);
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf"</span>, &amp;num);
+    }<span class="hljs-keyword">while</span>(num &lt; <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (num&gt;<span class="hljs-number">1</span>) right = num;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num &lt; <span class="hljs-number">1</span>) right = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">else</span> {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"root = 1"</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+    root = (left + right)/<span class="hljs-number">2</span>;
+    <span class="hljs-keyword">while</span>((root*root-num&gt;<span class="hljs-number">1e-6</span>)||(num - root * root &gt; <span class="hljs-number">1e-6</span>)){
+        <span class="hljs-keyword">if</span>(root*root&gt;num+<span class="hljs-number">1e-6</span>){
+            right = root;
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (num&gt;root*root+<span class="hljs-number">1e-6</span>){
+            left = root;
+        }
+        root = (left + right)/<span class="hljs-number">2</span>;
+    }
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"root=%f"</span>, root);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+                </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+</html>
