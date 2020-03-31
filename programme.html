@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+    <head>
+      <title>programme</title>
+      <style type="text/css">
+          body {
+              background-color: #d0dfe6
+          }
+
+          h1 {
+              color: #144a74
+          }
+
+          h2 {
+              color: #11659ac9
+          }
+
+          code {
+              font-family: Consolas;
+              color: navy;
+              font-size: 20px;
+          }
+      </style>
+      <link rel="stylesheet" href="C:/Users/sheva/highlightjs/styles/atom-one-dark-reasonable.css">
+      <script src="C:/Users/sheva/highlightjs/highlight.pack.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <meta charset="utf-8">
+    </head>
+
+    <body>
+      <p>
+          </p><pre>            <code class="python hljs">
+    <span class="hljs-comment"># programme form C</span>
+    <span class="hljs-keyword">import</span> sys
+    <span class="hljs-keyword">import</span> time
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_use</span><span class="hljs-params">()</span>:</span>
+      print(<span class="hljs-string">" ___________________________________________________________"</span>)
+      print(<span class="hljs-string">"|If you want to search a student's score,input 's'          |"</span>)
+      print(<span class="hljs-string">"|If you want to search a certain class's scores,input 'c'   |"</span>)
+      print(<span class="hljs-string">"|If you want to print the statistical information,input 'p' |"</span>)
+      print(<span class="hljs-string">"|If you want to search the highest 5 total scores,input 't' |"</span>)
+      print(<span class="hljs-string">"|If you want to search the highest 5 branch scores,input 'b'|"</span>)
+      print(<span class="hljs-string">"|If you want to exit this function,input 'e'                |"</span>)
+      print(<span class="hljs-string">"|___________________________________________________________|\n"</span>)
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_main</span><span class="hljs-params">()</span>:</span>
+      print(<span class="hljs-string">" ______________________________________________"</span>)
+      print(<span class="hljs-string">"|If you want to type-in data,input 't'         |"</span>)
+      print(<span class="hljs-string">"|If you want to use data,input 'u'             |"</span>)
+      print(<span class="hljs-string">"|If you want to exit this program,input 'e':   |"</span>)
+      print(<span class="hljs-string">"|______________________________________________|\n"</span>)
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_file</span><span class="hljs-params">()</span>:</span>
+      print(<span class="hljs-string">" _________________________________________________________________"</span>)
+      print(<span class="hljs-string">"|Every data line belonging to a student includes these data forms:|"</span>)
+      print(<span class="hljs-string">"|class,sex( F or M ),number,name,score                            |"</span>)
+      print(<span class="hljs-string">"|Every data is divided by a English comma','                      |"</span>)
+      print(<span class="hljs-string">"|Ended by a English period'.'      (!!!)                          |"</span>)
+      print(<span class="hljs-string">"|Sample:                                                          |"</span>)
+      print(<span class="hljs-string">"|1905,F,20193025,Tiger,99,95,98,94,97                             |"</span>)
+      print(<span class="hljs-string">"|1905,F,20193026,Panda,96,97,98,99,99.                            |"</span>)
+      print(<span class="hljs-string">"|please input the data:                                           |"</span>)
+      print(<span class="hljs-string">"|_________________________________________________________________|\n"</span>)
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_input</span><span class="hljs-params">()</span>:</span>
+      filename = input(<span class="hljs-string">"\nPlease input the name of the file:"</span>)
+      <span class="hljs-keyword">try</span>:
+          f = open(filename, <span class="hljs-string">'a'</span>)
+      <span class="hljs-keyword">except</span> FileNotFoundError:
+          print(<span class="hljs-string">"Fail to open"</span>)
+          sys.exit(<span class="hljs-number">0</span>)
+      print_file()
+      aline = input()
+      <span class="hljs-keyword">while</span> aline[<span class="hljs-number">-1</span>] != <span class="hljs-string">'.'</span>:
+          f.write(aline)
+          f.write(<span class="hljs-string">"\n"</span>)
+      <span class="hljs-keyword">if</span> aline[<span class="hljs-number">-1</span>] == <span class="hljs-string">"."</span>:
+          f.write(aline[<span class="hljs-number">0</span>:<span class="hljs-number">-1</span>])
+      print(<span class="hljs-string">"\ntype in finished."</span>)
+      f.close()
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">use</span><span class="hljs-params">()</span>:</span>
+      stu_num, class_num, course_num = \
+          (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+      filename = input(<span class="hljs-string">"\nPlease input the file name:\n"</span>)
+      <span class="hljs-keyword">try</span>:
+          fp1 = open(filename, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">"UTF-8"</span>)
+      <span class="hljs-keyword">except</span> FileExistsError:
+          print(<span class="hljs-string">"cannot open the file"</span>)
+          <span class="hljs-keyword">return</span>
+      <span class="hljs-comment"># data preparation</span>
+      print(<span class="hljs-string">"\nanalysing...\n"</span>)
+      <span class="hljs-comment"># to get course_num</span>
+      use_line = fp1.readline()
+      course_num = use_line.count(<span class="hljs-string">","</span>) - <span class="hljs-number">3</span>
+      print(<span class="hljs-string">"course number = {}"</span>.format(course_num))
+      <span class="hljs-comment"># to get stu_num and store all data in "all_data"</span>
+      fp1.seek(<span class="hljs-number">0</span>)
+      all_data = []
+      <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> fp1:
+          stu_num += <span class="hljs-number">1</span>
+          line = line.replace(<span class="hljs-string">"\n"</span>, <span class="hljs-string">""</span>)
+          all_data.append(line.split(<span class="hljs-string">","</span>))
+      print(<span class="hljs-string">"student number = {}"</span>.format(stu_num))
+      <span class="hljs-comment"># to get class_num and calculate every student's total score</span>
+      class_ = set()
+      <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> all_data:
+          <span class="hljs-keyword">if</span> row[<span class="hljs-number">0</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> class_:
+              class_.add(row[<span class="hljs-number">0</span>])
+          sum1 = <span class="hljs-number">0</span>
+          <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>, <span class="hljs-number">4</span> + course_num):
+              sum1 += eval(row[i])
+          row.append(str(sum1))
+      class_num = len(class_)
+      print(<span class="hljs-string">"class number = {}"</span>.format(class_num))
+      fp1.close()
+      print(<span class="hljs-string">"\nanalysing finished"</span>)
+      <span class="hljs-comment"># function</span>
+      print_use()
+      char_use = input()
+      print(<span class="hljs-string">"\n"</span>)
+      <span class="hljs-keyword">while</span> char_use != <span class="hljs-string">'e'</span>:
+          <span class="hljs-keyword">while</span> (char_use != <span class="hljs-string">'s'</span>) <span class="hljs-keyword">and</span> (char_use != <span class="hljs-string">'c'</span>) <span class="hljs-keyword">and</span> (char_use != <span class="hljs-string">'p'</span>) \
+                  <span class="hljs-keyword">and</span> (char_use != <span class="hljs-string">'t'</span>) <span class="hljs-keyword">and</span> (char_use != <span class="hljs-string">'b'</span>) \
+                  <span class="hljs-keyword">and</span> (char_use != <span class="hljs-string">'e'</span>):
+              print(<span class="hljs-string">"wrong input form! input again"</span>)
+              print_use()
+              char_use = input()
+              print(<span class="hljs-string">"\n"</span>)
+          <span class="hljs-keyword">if</span> char_use == <span class="hljs-string">'s'</span>:
+              student_all = input(<span class="hljs-string">"Please input the number and name of a \
+    student,divided by a comma:\n"</span>)
+              student_all_list = student_all.split(<span class="hljs-string">","</span>)
+              found = <span class="hljs-number">0</span>
+              <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> all_data:
+                  <span class="hljs-keyword">if</span> row[<span class="hljs-number">2</span>] == student_all_list[<span class="hljs-number">0</span>] <span class="hljs-keyword">and</span> \
+                          row[<span class="hljs-number">3</span>] == student_all_list[<span class="hljs-number">1</span>]:
+                      print(<span class="hljs-string">"\nScore:"</span>)
+                      <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">4</span>, <span class="hljs-number">4</span> + course_num):
+                          print(<span class="hljs-string">"{}"</span>.format(row[i]), end=<span class="hljs-string">" "</span>)
+                      print(<span class="hljs-string">"\n"</span>)
+                      found += <span class="hljs-number">1</span>
+                      <span class="hljs-keyword">break</span>
+                  <span class="hljs-keyword">if</span> (found == <span class="hljs-number">0</span>) <span class="hljs-keyword">and</span> (row == all_data[<span class="hljs-number">-1</span>]):
+                      print(<span class="hljs-string">"Not found."</span>)
+          <span class="hljs-keyword">elif</span> char_use == <span class="hljs-string">'c'</span>:
+              temp_class_number = input(<span class="hljs-string">"Please input the number of class:"</span>)
+              print(<span class="hljs-string">" _________________________ "</span>)
+              temp_class = []
+              <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> all_data:
+                  <span class="hljs-keyword">if</span> row[<span class="hljs-number">0</span>] == temp_class_number:
+                      temp_class.append(row)
+              temp_sum = []
+              temp_max = []
+              temp_min = []
+              <span class="hljs-keyword">for</span> temp_course <span class="hljs-keyword">in</span> range(course_num):
+                  temp_sum.append(<span class="hljs-number">0</span>)
+                  temp_max.append(<span class="hljs-number">0</span>)
+                  temp_min.append(<span class="hljs-number">1000</span>)
+                  temp_aver = <span class="hljs-number">0</span>
+                  <span class="hljs-keyword">for</span> temp_stu <span class="hljs-keyword">in</span> temp_class:
+                      temp_stun = eval(temp_stu[<span class="hljs-number">4</span> + temp_course])
+                      <span class="hljs-keyword">if</span> temp_stun &gt;= temp_max[temp_course]:
+                          temp_max[temp_course] = temp_stun
+                      <span class="hljs-keyword">if</span> temp_stun &lt;= temp_min[temp_course]:
+                          temp_min[temp_course] = temp_stun
+                      temp_sum[temp_course] += temp_stun
+                      temp_aver = temp_sum[temp_course] / (len(temp_class))
+                  print(<span class="hljs-string">"|course{:d}|{:5.2f}|{:5.2f}|{:5.2f}|"</span>.format(
+                      temp_course + <span class="hljs-number">1</span>,
+                      temp_aver, temp_max[temp_course],
+                      temp_min[temp_course]))
+              print(<span class="hljs-string">"|_________________________|"</span>)
+          <span class="hljs-keyword">elif</span> char_use == <span class="hljs-string">'p'</span>:
+              print(<span class="hljs-string">" _______________________________ "</span>)
+              <span class="hljs-keyword">for</span> temp_class <span class="hljs-keyword">in</span> range(class_num):
+                  class_stu_num = <span class="hljs-number">0</span>
+                  sum_class = <span class="hljs-number">0</span>
+                  class_women_num = <span class="hljs-number">0</span>
+                  sum_women = <span class="hljs-number">0</span>
+                  class_men_num = <span class="hljs-number">0</span>
+                  sum_men = <span class="hljs-number">0</span>
+                  <span class="hljs-keyword">for</span> temp_stu <span class="hljs-keyword">in</span> all_data:
+                      <span class="hljs-keyword">if</span> eval(temp_stu[<span class="hljs-number">0</span>]) % <span class="hljs-number">100</span> == temp_class + <span class="hljs-number">1</span>:
+                          class_stu_num += <span class="hljs-number">1</span>
+                          sum_class += eval(temp_stu[<span class="hljs-number">4</span> + course_num])
+                          <span class="hljs-keyword">if</span> temp_stu[<span class="hljs-number">1</span>] == <span class="hljs-string">'M'</span> <span class="hljs-keyword">or</span> temp_stu[<span class="hljs-number">1</span>] == <span class="hljs-string">"m"</span>:
+                              class_women_num += <span class="hljs-number">1</span>
+                              sum_women += eval(temp_stu[<span class="hljs-number">4</span> + course_num])
+                          <span class="hljs-keyword">elif</span> temp_stu[<span class="hljs-number">1</span>] == <span class="hljs-string">'F'</span> <span class="hljs-keyword">or</span> temp_stu[<span class="hljs-number">1</span>] == <span class="hljs-string">"f"</span>:
+                              class_men_num += <span class="hljs-number">1</span>
+                              sum_men += eval(temp_stu[<span class="hljs-number">4</span> + course_num])
+                  print(<span class="hljs-string">"| class {:3d}'s average |{:10f}|"</span>.format(
+                      temp_class + <span class="hljs-number">1</span>, sum_class / class_stu_num))
+                  <span class="hljs-keyword">if</span> class_women_num == <span class="hljs-number">0</span>:
+                      print(<span class="hljs-string">"|  0 women's average  |         0|"</span>)
+                  <span class="hljs-keyword">else</span>:
+                      print(<span class="hljs-string">"|  {:2d}women's average  |{:10f}|"</span>.format(
+                          class_women_num, sum_women / class_women_num))
+                  <span class="hljs-keyword">if</span> class_men_num == <span class="hljs-number">0</span>:
+                      print(<span class="hljs-string">"|  0 men's average    |         0|"</span>)
+                  <span class="hljs-keyword">else</span>:
+                      print(<span class="hljs-string">"|   {:2d}men's average   |{:10f}|"</span>.format(
+                          class_men_num, sum_men / class_men_num))
+                  time.sleep(<span class="hljs-number">0.2</span>)
+              print(<span class="hljs-string">"|________________________________|"</span>)
+          <span class="hljs-keyword">elif</span> char_use == <span class="hljs-string">'t'</span>:
+              temp_sort = sorted(all_data, key=<span class="hljs-keyword">lambda</span> row1: eval(
+                  row1[<span class="hljs-number">4</span> + course_num]), reverse=<span class="hljs-literal">True</span>)
+              print(<span class="hljs-string">"Total score:"</span>)
+              <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+                  print(<span class="hljs-string">"No.{:d}:{:.2f}"</span>.format(
+                      i + <span class="hljs-number">1</span>, eval(temp_sort[i][<span class="hljs-number">4</span> + course_num])))
+          <span class="hljs-keyword">elif</span> char_use == <span class="hljs-string">'b'</span>:
+              <span class="hljs-keyword">for</span> temp_course <span class="hljs-keyword">in</span> range(course_num):
+                  temp_sort = sorted(all_data, key=<span class="hljs-keyword">lambda</span> row2: eval(
+                      row2[<span class="hljs-number">4</span> + temp_course]), reverse=<span class="hljs-literal">True</span>)
+                  print(<span class="hljs-string">"course{}'s best 5 score:"</span>.format(temp_course + <span class="hljs-number">1</span>))
+                  <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):
+                      print(<span class="hljs-string">"No.{:d}:{:.2f}"</span>.format(
+                          i + <span class="hljs-number">1</span>, eval(temp_sort[i][<span class="hljs-number">4</span> + temp_course])))
+                  time.sleep(<span class="hljs-number">0.2</span>)
+          <span class="hljs-keyword">elif</span> char_use == <span class="hljs-string">'e'</span>:
+              <span class="hljs-keyword">return</span>
+          input(<span class="hljs-string">"\npress enter to continue\n"</span>)
+          print(<span class="hljs-string">"What do you want to do then?"</span>)
+          print_use()
+          char_use = input()
+          print(<span class="hljs-string">"\n"</span>)
+      <span class="hljs-keyword">return</span>
+
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+      print_main()
+      charmain = input()
+      <span class="hljs-keyword">while</span> charmain != <span class="hljs-string">'e'</span>:
+          <span class="hljs-keyword">while</span> (charmain != <span class="hljs-string">'t'</span>) <span class="hljs-keyword">and</span> (charmain != <span class="hljs-string">'u'</span>) <span class="hljs-keyword">and</span> (charmain != <span class="hljs-string">'e'</span>):
+              print(<span class="hljs-string">"wrong input form! please input again"</span>)
+              print_main()
+              charmain = input()
+          <span class="hljs-keyword">if</span> charmain == <span class="hljs-string">'t'</span>:
+              file_input()
+          <span class="hljs-keyword">elif</span> charmain == <span class="hljs-string">'u'</span>:
+              use()
+          <span class="hljs-keyword">elif</span> charmain == <span class="hljs-string">'e'</span>:
+              print(<span class="hljs-string">"Thanks for using!"</span>)
+              sys.exit(<span class="hljs-number">0</span>)
+          print(<span class="hljs-string">"\nWhat do you want to do then?"</span>)
+          print_main()
+          charmain = input()
+      <span class="hljs-keyword">if</span> charmain == <span class="hljs-string">'e'</span>:
+          print(<span class="hljs-string">"Thanks for using!"</span>)
+          input()
+          sys.exit(<span class="hljs-number">0</span>)
+
+
+    main()
+    </code>
+          </pre>
+      <p></p>
+
+
+    </body>
+<html>
